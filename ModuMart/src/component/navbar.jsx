@@ -23,7 +23,7 @@ export default function navbar(){
 
         </ul>
         <ul className='nav-links logsign'>
-            <li><Link to="/login">Login</Link></li>
+            <li><Link to="/login">Sign Up</Link></li>
 
             <li><Link to="/signin">Sign In</Link></li>
         </ul>

@@ -1,11 +1,11 @@
 import React from 'react'
 import Navbar from './component/navbar'
-// import Footer from './component/footer'
+import Footer from './component/footer'
 import Home from './pages/home.jsx'
 import Products from './pages/products.jsx'
 import Order from './pages/order.jsx'
 import Contact from './pages/contact.jsx'
-import Login from './pages/login.jsx'
+import Login from './pages/SignUp.jsx'
 import SignIn from './pages/signin.jsx'
 import { HashRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css'
@@ -23,7 +23,7 @@ const App = () => {
             <Route path='/login' element={<Login />} />
             <Route path='/signin' element={<SignIn />} />
           </Routes>
-          {/* <Footer /> */}
+          <Footer />
        </div>
     </Router>
    

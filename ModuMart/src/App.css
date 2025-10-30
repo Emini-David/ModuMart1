@@ -44,12 +44,6 @@ nav .nav-links a{
     font-size: 1rem;
     padding: 8px 12px;
 }
-nav .nav-links a:hover{
-    /* border-bottom: 2px solid #212ea0; */
-}
-.nav-links a:active{
-    text-decoration: underline;
-}
 .logsign a:hover{
     background-color: #212ea0;
     color: #fff;
@@ -153,20 +147,19 @@ nav .nav-links li a ::after{
     border-radius: 7px;
     cursor: pointer;
 }
+.hero .hero-text .order{
+    margin-right: 55%;
+}
 .hero .hero-text .order .btn1{
     background: none;
     color: #212ea0;
     border: 2px solid #212ea0;
+    margin-left: 4%;
 }
 .hero .hero-text .order .btn:hover{
     background-color: #071384;
     transform: translateY(-8px);
     transition: 0.9s;
-}
-.order{
-    width: 47%;
-    display: flex;
-    justify-content: space-between;
 }
 .hero .hero-text .order .btn1:hover{
     background-color: #212ea0;
@@ -448,28 +441,28 @@ nav .nav-links li a ::after{
     text-align: center;
     padding-top: 2%;
 }
+.order .abt-container{
+    background-color: #212ea0;
+    padding: 50px 20px;
+}
+.order .abt-container h1{
+    font-size: 45px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+.order .abt-container p{
+   font-size: 16px;
+    color: #fff;
+    line-height: 1.5;
+    text-align: center;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 .order .all{
     background-color: #f3f4f6;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     padding: 50px 20px;
     border: none;
-}
-.order .abt-container{
-    background-color: #212ea0;
-    padding: 50px 20px;
-}
-.order h1{
-    font-size: 45px;
-    margin-bottom: 20px;
-    color: #fff;
-}
-.order p{
-   font-size: 16px;
-    color: #fff;
-    line-height: 1.5;
-    text-align: center;
-    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .order .order-container{
     padding: 10px 15%;
@@ -604,7 +597,7 @@ nav .nav-links li a ::after{
 }
 .login .login-flex .login-image img{
     width: 80%;
-    height: 70vh;
+    height: 80vh;
     border-radius: 15px;
 }
 .login .login-flex .login-text{
@@ -612,6 +605,7 @@ nav .nav-links li a ::after{
     padding: 2% 5%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
+    height: 80vh;
 }
 .login .login-flex .login-text h2{
     font-size: 30px;
@@ -685,21 +679,110 @@ nav .nav-links li a ::after{
     color:crimson;
 }
 /* signin */
-.signin{
-    margin-top: 30px;
+.signin_box{
+    align-items: center;
     text-align: center;
-    padding-top: 2%;
+    margin: 5% 30%;
+    padding-bottom: 2%;
+    background: #fff;
+    /* width: 100%; */
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3)
 }
-.signin h3{
-    font-size: 35px;
-    margin-bottom: 20px;
+.signin_box .account{
+     padding: 5%;
+}
+.signin_box .account h2{
+    font-size: 30px;
+    margin-bottom: 10px;
     color: #000;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.signin form input{
-    
+.signin_box .account p{
+    font-size: 16px;
+    color: #000;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+.signin_box form{
+    margin: 5%;
+}
+.signin_box form input{
+    width: 100%;
+    padding: 12px 15px;
+    margin-top: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.signin_box form p{
+    text-align: right;
+    margin-top: 8px;
+}
+.divider {
+            text-align: center;
+            margin: 25px 0;
+            color: #999;
+            font-size: 13px;
+            position: relative;
+        }
 
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 45%;
+            height: 1px;
+            background: #e0e0e0;
+        }
 
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+.signin_box form button{
+    width: 100%;
+    padding: 12px 15px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #212ea0;
+    color: #fff;
+    transition: 0.3s;
+}
+.signin_box form button:hover{
+    background: #071384;
+    cursor: pointer;
+    transform: translateY(-8px);
+}
+.signin_box .google-btn{
+    display: flex;
+    padding: 12px 33%;
+    gap: 2%;
+    border: 1px solid #ccc;
+    color: #000;
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.signin_box .google-btn .google-icon{
+    width: 12px;
+}
+.signin_box .google-btn{
+    cursor: pointer;
+    background-color: #fff;
+    transition: 0.3s;
+}
+.signin_box .google-btn:hover{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+    background: #ccc;
+}
 
 /* footer */
 .footer{

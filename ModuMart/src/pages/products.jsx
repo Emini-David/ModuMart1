@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const products = () => {
   return (
@@ -27,6 +28,9 @@ const products = () => {
                 <p>Ergonomic wireless mouse with adjustable DPI settings and long battery life. Ideal for both work and play.</p>
                 <h5>$24.99</h5>
             </div>
+        </div>
+        <div className="ready container">
+          <Link className="btn" to="/order">Shop the full catalog</Link>
         </div>
         <div className="card-flex">
           <div className="card">

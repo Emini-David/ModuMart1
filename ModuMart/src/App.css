@@ -133,7 +133,6 @@ nav .nav-links li a ::after{
     font-size: 20px;
     margin-bottom: 30px;
     color: #333;
-    max-width: 450px;
     line-height: 1.3;
     font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -715,9 +714,17 @@ nav .nav-links li a ::after{
     font-size: 14px;
     font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.signin_box form p{
+.tagss{
     text-align: right;
-    margin-top: 8px;
+    font-size: 14px;
+    margin-top: 6px;
+}
+.tagss a{  
+    color: #000;
+    text-decoration: none;
+}
+.tagss a:hover{
+    color:crimson;
 }
 .divider {
             text-align: center;
@@ -779,7 +786,6 @@ nav .nav-links li a ::after{
     transition: 0.3s;
 }
 .signin_box .google-btn:hover{
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     transform: translateY(-5px);
     background: #ccc;
 }
@@ -849,4 +855,100 @@ nav .nav-links li a ::after{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-top: 1%;
     margin-bottom: 2%;
+}
+@media (max-width:768px){
+    .hero{
+        display: inline;
+        text-align: center;
+    }
+    .hero .hero-text{
+        display: inline;
+    }
+    .hero .hero-text h1{
+        font-size: 55px;
+        margin-bottom: 15px;
+        color: #000;
+    }
+    .hero .hero-text p{
+        text-align: center;
+    }
+    .hero .hero-text .order{
+        margin-right: 50px;
+    }
+    .hero .hero-text .order button{
+        padding: 10px 15px;
+         font-size: 14px;
+    font-weight: bold;
+    background-color: #212ea0;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    }
+    .hero .hero-text .order .btn1{
+        background: none;
+        margin-left: 3px;
+    }
+    .hero .hero-mage{
+        padding-top: 2%;
+    }
+    .hero .hero-mage img{
+        width: fit-content;
+        height: 80vh;
+    }
+    .why{
+        text-align: center;
+        margin-top: 40px;
+    }
+    .why h3{
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+    .why-section .cards{
+        display: inline;
+    }
+    .why-section .cards .card{
+        width: 100%;
+        margin-bottom: 3%;
+    }
+    .why-section .cards .card h4{
+        font-family: Georgia, serif;
+        font-size: 22px;
+        text-align: center;
+    }
+    .why-section .cards .card p{
+        text-align: center;
+        font-size: 14px;
+        line-height: 1.6;    
+    }
+    .why-section .cards .card i{
+        align-items: center;
+        padding-left: 235px;
+    }
+    .popular-section{
+        background: #f3f4f6;
+    }
+    .popular{
+        margin-top: 30px;
+        text-align: center;
+        padding-top: 5%;
+    }
+    .popular h3{
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+    .popular-section .cards{
+        display: inline;
+    }
+    .popular-section .cards .card{
+        width: 100%;
+        padding: 30px;
+        margin-bottom: 3%;
+    }
+    .popular-section .cards .card img{
+        width: 100%;
+        height: 300px;
+        margin-bottom: 13px;
+    }
+
 }

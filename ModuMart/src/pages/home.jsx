@@ -4,6 +4,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import keyboard from '../assets/keyboard.png'
 import mouse from '../assets/mouse.png'
 import headset from '../assets/headset.png'  
+import { Link } from 'react-router-dom'
 
 
 const home = () => {
@@ -14,8 +15,8 @@ const home = () => {
                 <h1>Welcome to ModuMart</h1>
                 <p>Your one-stop store for quality computer accessories, electronics, and more. Delivered with convenience and trust.</p>
                 <div className="order">
-                    <button className='btn'>Browse Store</button>
-                    <button className='btn1'>Order Now</button>
+                    <Link className='btn' to='/products'>Browse Store</Link>
+                    <Link className='btn1' to='/order'>Order Now</Link>
                 </div>
             </div>
             <div className="hero-mage">
@@ -76,7 +77,7 @@ const home = () => {
             <div className="ready-text">
                 <h2>Ready to Upgrade Your Setup?</h2>
                 <p>Join thousands of satisfied customers who have made ModuMart their favorite destination for high-quality computer accessories and expert advice.</p>
-                <button className='btn'>Shop Our Catalog</button>
+                <Link className='btn' to='/products'>Shop Our Catalog</Link>
             </div>
         </div>
     </section>

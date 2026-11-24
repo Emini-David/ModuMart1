@@ -1,0 +1,10 @@
+{
+  "name": "modumart-workspace",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix ./ModuMart run dev --",
+    "build": "npm --prefix ./ModuMart run build",
+    "lint": "npm --prefix ./ModuMart run lint",
+    "preview": "npm --prefix ./ModuMart run preview"
+  }
+}

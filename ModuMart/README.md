@@ -1,16 +1,34 @@
-# React + Vite
+# ModuMart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ModuMart is a responsive frontend storefront for computer systems and accessories. It is built with React and Vite and uses browser storage to keep a shopping cart between visits.
 
-Currently, two official plugins are available:
+## Run the project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+From the project folder:
 
-## React Compiler
+```bash
+npm install
+npm run dev
+```
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+You can also run `npm run dev` from the parent `ModuMart1` folder. The parent package forwards the app commands into this folder.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Browse computers, displays, components, peripherals, storage, power protection, networking, cables, desk accessories, and printers
+- Search, filter by category, and sort by price
+- Add products to a cart and change quantities immediately
+- Keep the cart in local storage
+- Complete a delivery and payment selection flow in a clearly marked frontend checkout demo
+- Use the layout on mobile and desktop
+
+## Project structure
+
+- `src/data/products.js` contains product details and currency formatting.
+- `src/pages` contains the home, shop, cart, and about pages.
+- `src/component` contains shared navigation, footer, and product card components.
+- `src/providers` contains the shared cart state.
+
+## Frontend-only note
+
+There is no server, account system, payment processing, or order submission. Checkout is a visual demo and does not send or save delivery details. Connect a backend and payment provider before accepting real orders.

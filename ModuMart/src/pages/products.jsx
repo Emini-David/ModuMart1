@@ -1,89 +1,50 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import ProductCard from '../component/ProductCard';
+import { categories, products } from '../data/products';
+import { Search } from 'lucide-react';
 
-const products = () => {
+const Products = () => {
+  const [searchParams] = useSearchParams();
+  const requestedCategory = searchParams.get('category');
+  const categoryFromLink = categories.includes(requestedCategory) ? requestedCategory : 'All products';
+  const [category, setCategory] = useState(categoryFromLink);
+  const [search, setSearch] = useState('');
+  const [sort, setSort] = useState('featured');
+  const brand = searchParams.get('brand');
+  const dealsOnly = searchParams.get('deals') === '1';
+
+  useEffect(() => {
+    setCategory(categoryFromLink);
+  }, [categoryFromLink]);
+
+  const visibleProducts = useMemo(() => {
+    const matchingProducts = products.filter((product) => {
+      const matchesCategory = category === 'All products' || product.category === category;
+      const searchText = `${product.name} ${product.category} ${product.description} ${product.brand}`.toLowerCase();
+      return matchesCategory && searchText.includes(search.toLowerCase().trim()) && (!brand || product.brand === brand) && (!dealsOnly || product.wasPrice);
+    });
+    if (sort === 'price-low') return matchingProducts.sort((a, b) => a.price - b.price);
+    if (sort === 'price-high') return matchingProducts.sort((a, b) => b.price - a.price);
+    return matchingProducts;
+  }, [category, search, sort, brand, dealsOnly]);
+
+  const heading = dealsOnly ? 'Deals on everyday gear.' : brand ? `${brand} products.` : 'Computers, parts & accessories.';
+
   return (
-    <section className='products'>
-      <div className='products-container'>
-        <h1>Our Products</h1>
-        <p>Discover our wide range of high-quality computer accessories designed to boost performance, enhance productivity, and keep you connected with style.</p>
-      </div>
-      <div className="buttons container">
-        <button className='btn'>All Items</button>
-        <button className='btn1'>⌨️ Keyboards & Mice</button>
-        <button className='btn1'>🎧 Headsets & Audio</button>
-        <button className='btn1'>💾 Storage Devices</button>
-        <button className='btn1'>🔋 Power & Chargers</button>
-        <button className='btn1'>🎮 Gaming Accessories</button>
-      </div>
-      <div className="cards container">
-        <div className="card-flex">
-              <div className="card">
-                <h4>Mechanical Keyboard</h4>
-                <p>A durable, backlit mechanical keyboard designed for speed and comfort. Perfect for gaming and professional typing.</p>
-                <h5>$59.99</h5>
-            </div>
-            <div className="card">
-                <h4>Wireless Mouse</h4>
-                <p>Ergonomic wireless mouse with adjustable DPI settings and long battery life. Ideal for both work and play.</p>
-                <h5>$24.99</h5>
-            </div>
+    <main className="page-width shop-page">
+      <header className="shop-heading"><p className="eyebrow">The ModuMart collection</p><h1>{heading}</h1><p>Shop systems, components, and all the gear to connect, power, protect, and complete your setup.</p></header>
+      <section className="shop-controls" aria-label="Product filters">
+        <div className="category-list" role="group" aria-label="Filter by category">{categories.map((item) => <button key={item} className={`category-button${category === item ? ' active' : ''}`} type="button" onClick={() => setCategory(item)}>{item}</button>)}</div>
+        <div className="shop-tools">
+          <label className="search-box"><span aria-hidden="true"><Search size={17} strokeWidth={1.8} /></span><input type="search" value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search products" aria-label="Search products" /></label>
+          <label className="sort-control"><span>Sort:</span><select value={sort} onChange={(event) => setSort(event.target.value)} aria-label="Sort products"><option value="featured">Featured</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option></select></label>
         </div>
-        <div className="ready container">
-          <Link className="btn" to="/order">Shop the full catalog</Link>
-        </div>
-        <div className="card-flex">
-          <div className="card">
-            <h4>Noise-Cancelling Headset</h4>
-            <p>Experience immersive sound with this comfortable, noise-cancelling headset, perfect for gaming and virtual meetings.</p>
-            <h5>$89.99</h5>
-        </div>
-        <div className="card">
-            <h4>External SSD</h4>
-            <p>Fast and portable external SSD with 1TB capacity, ideal for quick file transfers and secure data storage.</p>
-            <h5>$129.99</h5>
-        </div>
-        </div>
-        <div className="card-flex">
-            <div className="card">
-                <h4>USB-C Hub</h4>
-                <p>Expand your connectivity with this multi-port USB-C hub, featuring HDMI, USB 3.0, and SD card slots.</p>
-                <h5>$49.99</h5>
-            </div>
-            <div className="card">
-                <h4>Gaming Mouse Pad</h4>
-                <p>Large, smooth gaming mouse pad with non-slip base, providing precision and comfort during extended gaming sessions.</p>
-                <h5>$19.99</h5>
-            </div>
-        </div>
-        <div className="card-flex">
-            <div className="card">
-                <h4>Ergonomic Laptop Stand</h4>
-                <p>Adjustable height for comfort and improved airflow.</p>
-                <h5>$40.00</h5>
-            </div>
-            <div className="card">
-                <h4>Wireless Presenter Remote</h4>
-                <p>Seamless presentations with precision control and built-in laser pointer.</p>
-                <h5>$25.00</h5>
-            </div>
-        </div>
-         <div className="card-flex">
-            <div className="card">
-                <h4>65W Fast Laptop Charger</h4>
-                <p>Universal compatibility, smart voltage control, and built-in surge protection.</p>
-                <h5>$35.00</h5>
-            </div>
-            <div className="card">
-                <h4>Multi-Port USB Charging Hub</h4>
-                <p>Charge up to 5 devices at once with smart power distribution.</p>
-                <h5>$28.00</h5>
-            </div>
-        </div>
-        </div>
-        
-    </section>
-  )
-}
+      </section>
+      <div className="results-line"><span>{visibleProducts.length} products</span>{(search || brand || dealsOnly) && <span className="active-filter">{brand || (dealsOnly ? 'Deals' : '')}{search && ` · “${search}”`}</span>}</div>
+      {visibleProducts.length ? <div className="product-grid shop-grid">{visibleProducts.map((product) => <ProductCard key={product.id} product={product} />)}</div> : <div className="empty-state"><span aria-hidden="true"><Search size={35} strokeWidth={1.6} /></span><h2>No products found</h2><p>Try another search or choose a different category.</p><button className="button button-blue" type="button" onClick={() => { setSearch(''); setCategory('All products'); }}>See all products</button></div>}
+    </main>
+  );
+};
 
-export default products
+export default Products;

@@ -11,6 +11,7 @@ const Order = () => {
   const [customer, setCustomer] = useState({ name: '', email: '', address: '' });
   const [paymentMethod, setPaymentMethod] = useState('delivery');
   const [orderPlaced, setOrderPlaced] = useState(false);
+  const [removingItems, setRemovingItems] = useState([]);
   const delivery = cartTotal >= 100000 || cart.length === 0 ? 0 : 2500;
   const total = cartTotal + delivery;
 
@@ -59,7 +60,11 @@ const Order = () => {
 
     if (!result.isConfirmed) return;
 
-    removeFromCart(item.id);
+    setRemovingItems((items) => [...items, item.id]);
+    window.setTimeout(() => {
+      removeFromCart(item.id);
+      setRemovingItems((items) => items.filter((id) => id !== item.id));
+    }, 240);
     Swal.fire({
       toast: true,
       position: 'top-end',
@@ -84,7 +89,7 @@ const Order = () => {
             <div className="checkout-layout">
               <section className="cart-panel" aria-label="Cart items">
                 {cart.map((item) => (
-                  <article className="cart-row" key={item.id}>
+                  <article className={`cart-row${removingItems.includes(item.id) ? ' is-removing' : ''}`} key={item.id}>
                     <img src={item.image} alt={item.name} />
                     <div className="cart-item-info"><p className="product-category">{item.category}</p><h2>{item.name}</h2><button className="remove-item" type="button" onClick={() => handleRemoveItem(item)}>Remove</button></div>
                     <div className="quantity-control" aria-label={`Quantity for ${item.name}`}><button type="button" aria-label="Decrease quantity" onClick={() => updateQuantity(item.id, item.quantity - 1)}><Minus size={14} aria-hidden="true" /></button><span>{item.quantity}</span><button type="button" aria-label="Increase quantity" onClick={() => updateQuantity(item.id, item.quantity + 1)}><Plus size={14} aria-hidden="true" /></button></div>

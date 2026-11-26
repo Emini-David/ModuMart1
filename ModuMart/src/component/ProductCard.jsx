@@ -1,13 +1,21 @@
+import { useEffect, useRef, useState } from 'react';
 import { useStore } from '../providers/StoreContext';
 import { formatPrice } from '../data/products';
-import { Plus } from 'lucide-react';
+import { Check, Plus } from 'lucide-react';
 import Swal from 'sweetalert2';
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useStore();
+  const [added, setAdded] = useState(false);
+  const feedbackTimer = useRef(null);
+
+  useEffect(() => () => window.clearTimeout(feedbackTimer.current), []);
 
   const handleAddToCart = () => {
     addToCart(product);
+    setAdded(true);
+    window.clearTimeout(feedbackTimer.current);
+    feedbackTimer.current = window.setTimeout(() => setAdded(false), 1400);
     Swal.fire({
       toast: true,
       position: 'top-end',
@@ -34,8 +42,9 @@ const ProductCard = ({ product }) => {
         </div>
         {product.wasPrice && <p className="old-price">{formatPrice(product.wasPrice)}</p>}
         <p className="product-description">{product.description}</p>
-        <button className="button button-dark button-add" type="button" onClick={handleAddToCart}>
-          <Plus className="button-icon" aria-hidden="true" /> Add to cart
+        <button className={`button button-dark button-add${added ? ' is-added' : ''}`} type="button" onClick={handleAddToCart}>
+          {added ? <Check className="button-icon" aria-hidden="true" /> : <Plus className="button-icon" aria-hidden="true" />}
+          {added ? 'Added' : 'Add to cart'}
         </button>
       </div>
     </article>

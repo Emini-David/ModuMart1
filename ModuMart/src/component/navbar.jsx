@@ -14,7 +14,7 @@ const Navbar = () => {
       <div className="announcement"><div className="page-width">Computers, components, and accessories for every setup <span>·</span> Shop ModuMart</div></div>
       <nav className="nav-wrap page-width" aria-label="Main navigation">
         <Link className="brand" to="/" aria-label="ModuMart home" onClick={closeMenu}><img src={logo} alt="ModuMart" /></Link>
-        <button className="menu-toggle" type="button" aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}><span /><span /></button>
+        <button className={`menu-toggle${menuOpen ? ' open' : ''}`} type="button" aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}><span /><span /></button>
         <div className={`nav-content${menuOpen ? ' open' : ''}`}>
           <div className="nav-links"><NavLink to="/" onClick={closeMenu}>Home</NavLink><NavLink to="/products" onClick={closeMenu}>Shop</NavLink><Link to="/products" onClick={closeMenu}>Categories</Link><Link to="/products?deals=1" onClick={closeMenu}>Deals</Link><NavLink to="/about" onClick={closeMenu}>About</NavLink></div>
           <div className="nav-actions">
@@ -23,7 +23,7 @@ const Navbar = () => {
             </Link>
             <Link className="cart-link" to="/cart" onClick={closeMenu}>
               <span className="cart-symbol" aria-hidden="true"><ShoppingCart size={21} strokeWidth={1.8} /></span>
-              <span>Cart</span><span className="cart-count">{cartCount}</span>
+              <span>Cart</span><span key={cartCount} className="cart-count bump">{cartCount}</span>
             </Link>
           </div>
         </div>

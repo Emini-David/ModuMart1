@@ -1,3 +1,4 @@
+/* Generated using AppDeploy UI skill */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
@@ -398,6 +399,107 @@ img { display: block; max-width: 100%; }
   .footer-bottom { padding-top: 20px; padding-bottom: 20px; font-size: 12px; }
 }
 
+/* Calm, purposeful motion for page changes and everyday feedback. */
+.app-shell > main { animation: page-arrive .48s cubic-bezier(.2, .7, .2, 1) both; }
+.hero-copy > * { animation: content-arrive .55s cubic-bezier(.2, .7, .2, 1) both; }
+.hero-copy > :nth-child(1) { animation-delay: .08s; }
+.hero-copy > :nth-child(2) { animation-delay: .16s; }
+.hero-copy > :nth-child(3) { animation-delay: .24s; }
+.hero-copy > :nth-child(4) { animation-delay: .32s; }
+.hero-copy > :nth-child(5) { animation-delay: .4s; }
+.hero-art { animation: hero-art-arrive .8s .14s cubic-bezier(.2, .7, .2, 1) both; }
+.hero-art::before { animation: hero-backplate-drift 7s 1s ease-in-out infinite alternate; }
+
+.category-card,
+.product-card { animation: content-arrive .48s cubic-bezier(.2, .7, .2, 1) both; }
+.category-card:nth-child(6n + 1), .product-card:nth-child(4n + 1) { animation-delay: .04s; }
+.category-card:nth-child(6n + 2), .product-card:nth-child(4n + 2) { animation-delay: .1s; }
+.category-card:nth-child(6n + 3), .product-card:nth-child(4n + 3) { animation-delay: .16s; }
+.category-card:nth-child(6n + 4), .product-card:nth-child(4n) { animation-delay: .22s; }
+.category-card:nth-child(6n + 5) { animation-delay: .28s; }
+.category-card:nth-child(6n) { animation-delay: .34s; }
+.about-values article { animation: content-arrive .5s cubic-bezier(.2, .7, .2, 1) both; }
+.about-values article:nth-child(2) { animation-delay: .1s; }
+.about-values article:nth-child(3) { animation-delay: .2s; }
+.cart-row { animation: content-arrive .42s cubic-bezier(.2, .7, .2, 1) both; }
+.cart-row:nth-child(2) { animation-delay: .06s; }
+.cart-row:nth-child(3) { animation-delay: .12s; }
+.cart-row:nth-child(4) { animation-delay: .18s; }
+.cart-row.is-removing { animation: cart-row-leave .24s ease-in forwards; pointer-events: none; }
+.empty-cart, .empty-state, .order-success { animation: content-arrive .5s cubic-bezier(.2, .7, .2, 1) both; }
+.success-mark { animation: success-pop .48s .12s cubic-bezier(.2, .8, .2, 1.35) both; }
+.cart-count.bump { animation: cart-count-pop .36s cubic-bezier(.2, .8, .2, 1.35); }
+.button-add .button-icon { transition: transform .2s ease; }
+.button-add:hover .button-icon { transform: rotate(10deg) scale(1.08); }
+.button-add.is-added, .button-add.is-added:hover { background: #087a54; }
+.button-add.is-added .button-icon { animation: icon-confirm .34s cubic-bezier(.2, .8, .2, 1.2) both; }
+.button .button-icon { transition: transform .2s ease; }
+.button:not(.button-add):hover .button-icon { transform: translateX(3px); }
+.button:active { transform: translateY(0) scale(.98); }
+.category-button { transition: color .2s ease, background .2s ease, transform .2s ease; }
+.category-button:active { transform: scale(.97); }
+.footer-socials a { transition: border-color .2s ease, color .2s ease, transform .2s ease; }
+.footer-socials a:hover { transform: translateY(-3px) rotate(-3deg); }
+
+@media (max-width: 640px) {
+  .nav-content {
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease, visibility 0s linear .2s;
+  }
+  .nav-content.open {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    transition-delay: 0s;
+  }
+  .menu-toggle span { transition: transform .2s ease, opacity .16s ease; }
+  .menu-toggle.open span:first-child { transform: translateY(3.5px) rotate(45deg); }
+  .menu-toggle.open span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
+}
+
+@keyframes page-arrive {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes content-arrive {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes hero-art-arrive {
+  from { opacity: 0; transform: translateX(24px) scale(.98); }
+  to { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes hero-backplate-drift {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-5px, 8px, 0); }
+}
+@keyframes cart-count-pop {
+  0% { opacity: .7; transform: scale(.72) rotate(-8deg); }
+  72% { transform: scale(1.14) rotate(2deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+@keyframes icon-confirm {
+  from { opacity: 0; transform: rotate(-75deg) scale(.65); }
+  to { opacity: 1; transform: rotate(0) scale(1); }
+}
+@keyframes cart-row-leave {
+  to { opacity: 0; transform: translateX(-18px); }
+}
+@keyframes success-pop {
+  from { opacity: 0; transform: scale(.68) rotate(-18deg); }
+  to { opacity: 1; transform: scale(1) rotate(0); }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
 }

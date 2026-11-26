@@ -32,7 +32,8 @@ const Home = () => {
           <p className="eyebrow">Your setup, sorted</p>
           <h1>Everything your system needs.</h1>
           <p className="hero-description">Shop computers, components, and the accessories that bring your workspace together. Find the right gear for work, study, and play.</p>
-          <div className="hero-actions"><Link className="button button-blue" to="/products">Shop all products <ArrowRight className="button-icon" aria-hidden="true" /></Link><Link className="hero-secondary" to="/products?category=Systems">Explore computer systems</Link></div>
+          <div className="hero-actions"><Link className="button button-blue" to="/products">Shop all products <ArrowRight className="button-icon" aria-hidden="true" /></Link>
+          <Link className="hero-secondary" to="/products?category=Systems">Explore computer systems</Link></div>
           <div className="hero-proof"><span className="proof-dot" /> New gear for every setup</div>
         </div>
         <div className="hero-art"><img src={heroWoman} alt="Professional woman working at her laptop in a bright office" /></div>
